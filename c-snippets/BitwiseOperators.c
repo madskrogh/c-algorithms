@@ -2,29 +2,26 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
-//https://www.hackerrank.com/challenges/bitwise-operators-in-c/problem
 
 
 void calculate_the_maximum(int n, int k) {
-    //Write your code here.
-    int and, or, xor;
-    for (int a = 0; a < n; a++) {
-        for (int b = a; b < n; b++) {
-            if(and < a&b < k ) {
+    int and = 0, or = 0, xor = 0;
+    for (int a = 1; a <= n; a++) {
+        for (int b = a+1; b <= n; b++) {
+            if (and < (a&b) && (a&b) < k ) {
                 and = a&b; 
             } 
-            if(or < a|b < k ) {
-                and = a&b; 
+            if(or < (a|b) && (a|b) < k ) {
+                or = a|b; 
             } 
-            if(xor < a^b < k ) {
-                and = a&b; 
+            if(xor < (a^b) && (a^b) < k) {
+                xor = a^b; 
             } 
         } 
     }   
     printf("%d \n", and); 
     printf("%d \n", or); 
     printf("%d \n", xor); 
-
 }
 
 int main() {
